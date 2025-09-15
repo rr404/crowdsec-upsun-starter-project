@@ -1,0 +1,42 @@
+####################################################################
+### CUSTOMISATION SECTION
+####################################################################
+
+### CrowdSec Security Stack Setup ######################################
+# Override the version of crowdsec to install if you want a specific one
+# Check latest release at https://github.com/crowdsecurity/crowdsec/releases
+export CROWDSEC_VERSION="${CROWDSEC_VERSION:-v1.7.0}"
+
+# Only if you want to force the re-installation of crowdsec
+ # put a unique string the force mecanism will check if CROWDSEC_VERSION+REINSTALL_SUFFIX already exists
+ # example: timestamp or date "2025-07-01" or "2027-07-01-secondForce"
+ # It will be used to name the lock file
+export REINSTALL_SUFFIX="${REINSTALL_SUFFIX:-}"
+
+####################################################################
+### DO NOT EDIT THIS SECTION
+####################################################################
+
+### Remediation Components Setup ######################################
+# If you are using Cloudflare or Fastly, you need to set SECRET variables in upsun console.
+## Don't store it here, store it as a secure env variable via upsun console settings/variables or upsun cli https://docs.upsun.com/development/variables/set-variables.html
+
+# For Cloudflare create a "env:CLOUDFLARE_API_TOKENS" variable
+## API tokens: one or multiple separated by commas "token1,token2"
+## CF doc: https://doc.crowdsec.net/u/bouncers/cloudflare-workers
+
+# For Fastly create a "env:FASTLY_API_TOKENS" variable
+## API tokens: one or multiple separated by commas "token1,token2"
+## Fastly doc: https://doc.crowdsec.net/u/bouncers/fastly
+
+export BIN_DIR="${PLATFORM_APP_DIR}/cs/usr/local/bin"
+
+export VAR_DIR="${PLATFORM_APP_DIR}/cs/var"
+export LOG_DIR="${VAR_DIR}/log"
+export TMP_DIR="${VAR_DIR}/tmp"
+
+export SCRIPTS_DIR="${PLATFORM_APP_DIR}/scripts"
+
+export DEPLOY_LOG_FILE="${LOG_DIR}/deploy.log"
+
+export CROWDSEC_DIR="${PLATFORM_APP_DIR}/cs/etc/crowdsec"

@@ -1,0 +1,9 @@
+# Ignore local configuration files.
+/.env
+
+# Hidden files
+.DS_Store
+/*/.DS_Store
+
+# Claude Code project instructions
+CLAUDE.md

@@ -1,0 +1,45 @@
+applications:
+    # The name of this app. Must be unique within a project.
+    crowdsec:
+        type: composable:25.05
+        # Where the app is located on the filesystem.
+        source:
+            root: "crowdsec"
+        # The runtime the application uses.
+        #stack: ["gettext", "go", "rsyslog", "netcat", "gnumake", "tcpdump", "python3.13"]
+        stack: ["gettext", "python3.13"]
+
+        # Configuration of the build of the application.
+        build:
+            flavor: none
+
+        # Need more RAM than CPU #TODO Select one ?
+        #container_profile: BALANCED
+
+        mounts:
+            'cs':
+                source: instance
+                source_path: 'cs'
+
+        hooks:
+            build: |
+                set -eu
+                ./scripts/0_build.sh
+            deploy: |
+                set -eu
+                ./scripts/1_deploy-crowdsec.sh
+                ./scripts/2_deploy-bouncer.sh
+        web:
+            upstream:
+                socket_family: tcp
+                protocol: http
+   
+routes:
+    # The routes of the project.
+    # Each route describes how an incoming URL is going
+    # to be processed by Upsun.
+    "https://logs.{default}/":
+        type: upstream
+        upstream: "crowdsec:http"
+        cache:
+            enabled: false
