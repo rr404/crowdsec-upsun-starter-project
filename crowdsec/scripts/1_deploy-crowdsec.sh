@@ -50,7 +50,6 @@ if [[ ! -f "$LOCKFILE" ]]; then
     ### Start CrowdSec service
     cp ${SCRIPTS_DIR}/crowdsec/* -R $CROWDSEC_DIR
     cd ${SCRIPTS_DIR}
-    bash 1b_start-crowdsec-service.sh >> $DEPLOY_LOG_FILE 2>&1
 
     ###
     if systemctl --user is-active --quiet crowdsec; then
@@ -63,4 +62,5 @@ else
     echo "CrowdSec is already installed with version ${CROWDSEC_VERSION}${REINSTALL_SUFFIX}. Skipping installation." >> $DEPLOY_LOG_FILE
 fi
 
-
+## Starting CrowdSec service
+bash 1b_start-crowdsec-service.sh >> $DEPLOY_LOG_FILE 2>&1
