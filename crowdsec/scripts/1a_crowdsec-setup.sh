@@ -102,6 +102,8 @@ setup_api() {
 setup_collections() {
 	$BASE/cscli -c "$CONFIG_FILE" hub update
 	$BASE/cscli -c "$CONFIG_FILE" collections install crowdsecurity/linux
+	$BASE/cscli -c "$CONFIG_FILE" collections install crowdsecurity/upsun
+	
 }
 
 main() {

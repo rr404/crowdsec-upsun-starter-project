@@ -1,0 +1,1 @@
+alias cscli="/app/cs/etc/crowdsec/cscli --config /app/cs/etc/crowdsec/config.yaml"
