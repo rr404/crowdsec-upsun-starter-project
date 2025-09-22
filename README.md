@@ -51,6 +51,9 @@ We recommend that you fork the [repository](https://github.com/crowdsecurity/cro
 
 You can follow [Upsun's documentation](https://docs.upsun.com/get-started/here/create-project.html)
 
+> Reommanded "Kickstart a new repository" that will lead you to link existing code to the upsun project being created, in our case your fork of **crowdsec-upsun-starter-project**
+> Don't forget to link the repository to your Upsun Project with upsun `upsun project:set-remote <your project id>`
+
 ![Project Setup](.resources/setup1a-project-setup.png)
 
 #### B. Deploy the project 
